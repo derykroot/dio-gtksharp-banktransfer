@@ -43,11 +43,7 @@ namespace dio_gtksharp_banktransfer
             get {
                 if (cta == null) {utils.msgbox("Conta inválida", _Win: this); _eCod.GrabFocus(); return false;}
                 if (!double.TryParse(_eValor.Text, out double _)) {utils.msgbox("Valor inválido", _Win: this); _eValor.GrabFocus(); return false;}
-                if (modoSacar) {
-                    if ((cta.Saldo - double.Parse(_eValor.Text)) < cta.Credito*-1) {
-                        utils.msgbox("Sem crédito suficiente!", _Win: this); _eValor.GrabFocus(); return false;
-                    }
-                }
+                
                 return true;
             }
         }
@@ -57,7 +53,13 @@ namespace dio_gtksharp_banktransfer
             if (!conds) return;
 
             var vlr = double.Parse(_eValor.Text);
-            if (modoSacar) cta.Sacar(vlr); else cta.Depositar(vlr);
+
+            if (!modoSacar) cta.Depositar(vlr);
+            else if (cta.Sacar(vlr) == SaqueRes.SemCred) {
+                utils.msgbox("Crédito Insuficiente!", _Win: this);
+                _eValor.GrabFocus();
+                return;
+            }            
 
             dados.updateStore(cta.Cod, 3, cta.Saldo);    
 

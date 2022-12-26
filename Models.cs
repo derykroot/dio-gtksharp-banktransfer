@@ -4,10 +4,16 @@ using Gtk;
 
 namespace dio_gtksharp_banktransfer
 {
-     public enum TipoConta
+    public enum TipoConta
     {
         PessoaFisica = 1,
         PessoaJuridica = 2
+    }
+
+    public enum SaqueRes
+    {
+        OK = 1,
+        SemCred = 2
     }
 
     public static class dados {
@@ -60,12 +66,17 @@ namespace dio_gtksharp_banktransfer
             this.Saldo += valor;
         }
 
-        public void Sacar(double valor) {
+        public SaqueRes Sacar(double valor) {
+            if (this.Saldo-valor < this.Credito*-1) return SaqueRes.SemCred;
             this.Saldo -= valor;
+            return SaqueRes.OK;         
         }
 
-        public bool Transferir(double valor, Conta dest) {
-            return true;
+        public SaqueRes Transferir(double valor, Conta dest) {
+            SaqueRes res = Sacar(valor);
+            if (res == SaqueRes.OK) dest.Depositar(valor);
+            return res;            
         }
     };
+
 }

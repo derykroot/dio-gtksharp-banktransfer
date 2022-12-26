@@ -42,13 +42,13 @@ Desafio 1 Bootcamp .Net Fundamentals
             </child>
             <child>
               <object class="GtkLinkButton">
-                <property name="label" translatable="yes">https://github.com/derykroot</property>
+                <property name="label" translatable="yes">https://github.com/derykroot/dio-gtksharp-banktransfer</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="halign">start</property>
                 <property name="relief">none</property>
-                <property name="uri">https://github.com/derykroot</property>
+                <property name="uri">https://github.com/derykroot/dio-gtksharp-banktransfer</property>
               </object>
               <packing>
                 <property name="expand">True</property>

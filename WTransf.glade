@@ -61,7 +61,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="_eCodorig">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                   </object>
@@ -87,7 +87,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="_eCoddest">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                   </object>
@@ -97,7 +97,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="_eValor">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                   </object>
